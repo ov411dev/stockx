@@ -47,6 +47,18 @@ assume Yeezys product_id is 1
 size_fit: integers from 1 to 5
 ```
 ```
+You can use Postman to easily populate the entries.
+Set size_fit variable in the request body
+{
+  "product_id": 1,
+  "size_fit": {{size_fit}}
+}
+Then in Pre-request Script set
+pm.environment.set('size_fit', _.random(1, 5))
+
+And finally run a Collection Runner with desired number of entries
+```
+```
 Check TrueToSizeCalculation by calling
 curl -X GET --header 'Accept: application/json' 'http://localhost:3001/tts/1'
 ```
