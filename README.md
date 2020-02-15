@@ -20,6 +20,8 @@ docker run -d -p 5432:5432 --name postgres \
     --env POSTGRES_DB=TrueToSizeData\
     postgres
 ```
+#test connection
+psql postgresql://postgres:mypasswd@localhost:5432/TrueToSizeData
 
 ```shell
 docker run -p 3001:3001 \
@@ -33,3 +35,15 @@ docker run -p 3001:3001 \
 ### Viewing
 
 * Go to swagger page - `localhost:3001/documentation`
+
+Post multiple true-to-size entries by
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+  "product_id": 1,
+  "size_fit": 3
+}' 'http://localhost:3001/tts'
+
+assume Yeezys product_id is 1
+size_fit: integers from 1 to 5
+
+Check TrueToSizeCalculation by calling
+curl -X GET --header 'Accept: application/json' 'http://localhost:3001/tts/1'
