@@ -10,20 +10,22 @@
 * Install dependencies - `npm i`
 * Run project - `npm start`
 
-### OR: Docker
+### Docker
 
 * `docker-compose up`
 
-```shell
+### OR: Docker one by one
+```
 docker run -d -p 5432:5432 --name postgres \
     --env POSTGRES_PASSWORD=mypasswd \
     --env POSTGRES_DB=TrueToSizeData\
     postgres
 ```
+```
 #test connection
 psql postgresql://postgres:mypasswd@localhost:5432/TrueToSizeData
-
-```shell
+```
+```
 docker run -p 3001:3001 \
     --link postgres:postgres \
     -e POSTGRES_HOST=postgres:mypasswd@postgres:5432 \
@@ -31,11 +33,10 @@ docker run -p 3001:3001 \
     -e POSTGRES_SSL=false \
     ovodocker/stockx:latest
 ```
-
 ### Viewing
 
 * Go to swagger page - `localhost:3001/documentation`
-
+```
 Post multiple true-to-size entries by
 curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
   "product_id": 1,
@@ -44,6 +45,8 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 
 assume Yeezys product_id is 1
 size_fit: integers from 1 to 5
-
+```
+```
 Check TrueToSizeCalculation by calling
 curl -X GET --header 'Accept: application/json' 'http://localhost:3001/tts/1'
+```

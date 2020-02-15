@@ -54,7 +54,7 @@ const server = new Hapi.Server(
         return tts;
       },
       config: {
-        description: "List All TrueToSizeData",
+        description: "Get TrueToSizeData calculation by product_id",
         notes: "TrueToSizeData from database",
         tags: ["api"],
         validate: {
@@ -72,7 +72,7 @@ const server = new Hapi.Server(
           const { payload } = req;
           return TrueToSizeData.create(payload);
         },
-        description: "Create a TrueToSizeData",
+        description: "Create a TrueToSizeData entry",
         notes: "create a TrueToSizeData",
         tags: ["api"],
         validate: {
@@ -92,7 +92,7 @@ const server = new Hapi.Server(
           return TrueToSizeData.destroy({ where: { id: req.params.id } });
         },
         description: "Delete a TrueToSizeData",
-        notes: "Delete a TrueToSizeData",
+        notes: "Delete a TrueToSizeData entry by id",
         tags: ["api"],
         validate: {
           params: {
