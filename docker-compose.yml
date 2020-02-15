@@ -1,0 +1,25 @@
+version: '3'
+services:
+  api-true-to-size:
+    container_name: api-true-to-size
+    build: .
+    ports:
+      - 3001:3001
+    environment:
+      POSTGRES_HOST: postgres:mypasswd@postgres:5432
+      PORT: 3001
+      
+    depends_on:
+      - postgres
+    links:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    restart: always
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: mypasswd
+      POSTGRES_DB: TrueToSizeData
