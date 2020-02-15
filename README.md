@@ -64,3 +64,6 @@ Same requests can be used for testing purposes
 Check TrueToSizeCalculation by calling
 curl -X GET --header 'Accept: application/json' 'http://localhost:3001/tts/1'
 ```
+```
+The logging is completed by PM2 right in the terminal output
+```
